@@ -1,0 +1,16 @@
+# FastAPI и связанные зависимости
+fastapi==0.95.2
+uvicorn==0.22.0
+
+# Работа с базой данных (PostgreSQL)
+sqlalchemy==2.0.15
+psycopg2-binary==2.9.6
+
+# Асинхронные запросы (если нужно)
+httpx==0.24.1
+
+# Telegram Bot API
+python-telegram-bot==20.3
+
+# Дополнительные утилиты
+python-dotenv==1.0.0
