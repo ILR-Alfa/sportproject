@@ -16,3 +16,21 @@ tg.MainButton.onClick(() => {
     tg.sendData("Данные отправлены!");
     tg.close();
 });
+
+// Пример запроса к backend
+async function registerUser() {
+    const response = await fetch("http://127.0.0.1:8000/users/", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+            telegram_id: user.id,
+            username: user.username,
+        }),
+    });
+    const data = await response.json();
+    console.log("User registered:", data);
+}
+
+registerUser();

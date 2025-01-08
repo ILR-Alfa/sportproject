@@ -30,4 +30,18 @@ def read_user(user_id: int, db: Session = Depends(get_db)):
         raise HTTPException(status_code=404, detail="User not found")
     return user
 
+@app.post("/competitions/", response_model=schemas.Competition)
+def create_competition(competition: schemas.CompetitionCreate, db: Session = Depends(get_db)):
+    db_competition = models.Competition(**competition.dict())
+    db.add(db_competition)
+    db.commit()
+    db.refresh(db_competition)
+    return db_competition
 
+@app.post("/predictions/", response_model=schemas.Prediction)
+def create_prediction(prediction: schemas.PredictionCreate, db: Session = Depends(get_db)):
+    db_prediction = models.Prediction(**prediction.dict())
+    db.add(db_prediction)
+    db.commit()
+    db.refresh(db_prediction)
+    return db_prediction
